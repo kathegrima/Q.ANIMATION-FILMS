@@ -69,6 +69,7 @@
     .logo-container {
       display: flex;
       align-items: center;
+      gap: 0.75rem; /*LOGO A SX*/
     }
 
     .logo {
@@ -581,10 +582,16 @@
       .nav-links { display: none; }
 
       .hero {
-        padding: 7rem 1.5rem 3rem;
-        justify-content: center;
-        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;  /* ← CAMBIA da flex-start a center */
+        padding: 8rem 5vw 4rem;
+        background: #ffffff;
+        position: relative;
+        overflow: hidden;
       }
+
 
       .hero-text {
         width: 100%;
