@@ -839,7 +839,7 @@
       e.preventDefault();
       const data = Object.fromEntries(new FormData(this));
       const body = `Nome: ${data.name} ${data.surname}\nEmail: ${data.email}\nTelefono: ${data.phone||'—'}\nProgetto: ${data.projectType}\n\n${data.message}`;
-      window.location.href = `mailto:info@qanimationfilms.com?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:info@qanimationfilms.it?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
       document.getElementById('successMessage').style.display = 'block';
       this.reset();
       setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
