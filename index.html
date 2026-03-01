@@ -1,916 +1,913 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Q. Animation Films - Produzione Cartoni Animati</title>
-    <style>
-        :root {
-            --primary-red: #c14750;
-            --primary-dark: #8b3339;
-            --bg-white: #ffffff;
-            --text-dark: #2d2d2d;
-            --text-gray: #666666;
-            --voila-pink: #E8197A;
-            --voila-red: #FF5722;
-            --voila-orange: #FF9800;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;700;900&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Nunito', sans-serif;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--voila-pink);
-        }
-
-        .productions-dropdown {
-            position: relative;
-        }
-
-        .productions-toggle {
-            cursor: pointer;
-            padding: 0.45rem 1rem;
-            border: 1.5px solid var(--text-dark);
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .productions-toggle:hover {
-            background-color: var(--text-dark);
-            color: white;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            padding: 0.75rem;
-            min-width: 180px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.25s ease;
-            z-index: 1001;
-        }
-
-        .productions-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li {
-            list-style: none;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 0.45rem 0.9rem;
-            color: var(--text-dark);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: var(--voila-pink);
-            color: white;
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 8rem 5vw 4rem;
-            background: #ffffff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(5rem, 13vw, 12rem);
-            font-weight: 900;
-            line-height: 0.88;
-            letter-spacing: -0.02em;
-            background: linear-gradient(90deg,
-                #E8197A 0%,
-                #E8197A 8%,
-                #c14750 28%,
-                #FF5722 50%,
-                #f5820a 68%,
-                #FF9800 88%,
-                #FF9800 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 2rem;
-        }
-
-        .hero-text p {
-            font-size: 1.4rem;
-            color: var(--text-gray);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
-            color: white;
-            box-shadow: 0 8px 24px rgba(232,25,122,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(232,25,122,0.45);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--primary-red);
-            border: 2px solid var(--primary-red);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary-red);
-            color: white;
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            animation: bounce 2s infinite;
-            z-index: 10;
-            text-decoration: none;
-        }
-
-        .scroll-arrow {
-            width: 48px;
-            height: 48px;
-            border: 2.5px solid var(--primary-red);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .scroll-arrow:hover {
-            background-color: var(--primary-red);
-        }
-
-        .scroll-arrow svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--primary-red);
-            transition: stroke 0.3s ease;
-        }
-
-        .scroll-arrow:hover svg {
-            stroke: white;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50%       { transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* Sections */
-        .section-bg-light { background-color: #fafafa; }
-        .section-bg-white { background-color: #ffffff; }
-
-        .section-wrap {
-            padding: 6rem 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--primary-red);
-            margin-bottom: 0.8rem;
-        }
-
-        .section-header p {
-            font-size: 1.15rem;
-            color: var(--text-gray);
-        }
-
-        /* Productions grid */
-        .productions-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .production-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .production-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        /* KEY FIX: position relative + overflow hidden so poster images stay inside */
-        .production-poster {
-            width: 100%;
-            aspect-ratio: 2/3;
-            position: relative;
-            overflow: hidden;
-            background: #e8e8e8;
-        }
-
-        .production-poster img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .production-info {
-            padding: 1.8rem;
-        }
-
-        .production-info h3 {
-            font-size: 1.6rem;
-            font-weight: 900;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.01em;
-        }
-
-        .production-meta {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--voila-pink);
-            margin-bottom: 0.7rem;
-        }
-
-        .production-desc {
-            font-size: 0.92rem;
-            color: var(--text-gray);
-            line-height: 1.6;
-            font-style: italic;
-            margin-bottom: 0.8rem;
-        }
-
-        .badge-production {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        /* About */
-        .about-inner {
-            max-width: 860px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-inner p {
-            font-size: 1.15rem;
-            line-height: 1.85;
-            color: var(--text-gray);
-        }
-
-        /* Contact */
-        .contact-container {
-            max-width: 860px;
-            margin: 0 auto;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 16px 50px rgba(0,0,0,0.09);
-        }
-
-        .form-group {
-            margin-bottom: 1.4rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.45rem;
-            font-size: 0.92rem;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s, background 0.3s;
-            background: #fafafa;
-            color: var(--text-dark);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--voila-pink);
-            background: white;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 140px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.4rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 0.5rem;
-            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
-            color: white;
-            box-shadow: 0 8px 24px rgba(232,25,122,0.25);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(232,25,122,0.4);
-        }
-
-        .success-message {
-            display: none;
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--text-dark);
-            color: white;
-            padding: 3rem 2rem 1.5rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto 2rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-brand img {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .footer-brand .motto {
-            font-style: italic;
-            font-size: 1rem;
-            color: #cccccc;
-            font-weight: 500;
-            line-height: 1.5;
-        }
-
-        .footer-section h4 {
-            color: var(--primary-red);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #aaaaaa;
-            text-decoration: none;
-            font-size: 0.93rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border: 1.5px solid #555;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaaaaa;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            border-color: white;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #444;
-            color: #777;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero { padding: 7rem 1.5rem 4rem; }
-            .nav-links { display: none; }
-            .productions-grid { grid-template-columns: 1fr; max-width: 420px; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .social-links { justify-content: center; }
-        }
-
-        @media (max-width: 600px) {
-            .section-header h2 { font-size: 2rem; }
-            .cta-buttons { flex-direction: column; }
-            .contact-form { padding: 1.5rem; }
-        }
-        /* Tablet e mobile */
-@media (max-width: 900px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q. Animation Films - Produzione Cartoni Animati</title>
+
+  <style>
+    :root {
+      --primary-red: #c14750;
+      --primary-dark: #8b3339;
+      --bg-white: #ffffff;
+      --text-dark: #2d2d2d;
+      --text-gray: #666666;
+      --voila-pink: #E8197A;
+      --voila-red: #FF5722;
+      --voila-orange: #FF9800;
+      --shadow: 0 10px 30px rgba(0,0,0,0.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: 'Nunito', sans-serif; }
+
+    /* Header */
     header {
-        padding: 0.75rem 1.25rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.9rem 1.25rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+      transition: transform 0.3s ease;
     }
 
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 1rem;
+    }
+
+    .logo-container { display: flex; align-items: center; }
+
+    .logo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Desktop nav */
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--voila-pink); }
+
+    .productions-dropdown { position: relative; }
+
+    .productions-toggle {
+      cursor: pointer;
+      padding: 0.45rem 1rem;
+      border: 1.5px solid var(--text-dark);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+    }
+
+    .productions-toggle:hover {
+      background-color: var(--text-dark);
+      color: white;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 0.7rem;
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.2s ease;
+      z-index: 1001;
+    }
+
+    .productions-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li { list-style: none; }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.45rem 0.9rem;
+      color: var(--text-dark);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.15s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: var(--voila-pink);
+      color: white;
+    }
+
+    /* Mobile menu button */
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(45,45,45,0.25);
+      background: white;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-btn:focus { outline: 3px solid rgba(232,25,122,0.25); outline-offset: 2px; }
+
+    .menu-icon {
+      width: 20px;
+      height: 14px;
+      position: relative;
+    }
+    .menu-icon span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+    }
+    .menu-icon span:nth-child(1){ top: 0; }
+    .menu-icon span:nth-child(2){ top: 6px; }
+    .menu-icon span:nth-child(3){ top: 12px; }
+
+    /* Mobile nav panel */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 78px;
+      left: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 0.75rem;
+      z-index: 999;
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 0.75rem 0.9rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .mobile-nav a:hover { background: rgba(232,25,122,0.08); }
+
+    body.menu-open .mobile-nav {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    body.menu-open .menu-icon span:nth-child(1){ top: 6px; transform: rotate(45deg); }
+    body.menu-open .menu-icon span:nth-child(2){ opacity: 0; }
+    body.menu-open .menu-icon span:nth-child(3){ top: 6px; transform: rotate(-45deg); }
+
+    /* Hero */
     .hero {
-        padding: 7rem 1.5rem 3rem;
-        justify-content: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8.5rem 1.25rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: #ffffff;
     }
 
-    .hero-content {
-        max-width: 100%;
-        align-items: center;
-        text-align: center;
+    .hero-inner {
+      width: 100%;
+      max-width: 1200px;
     }
 
     .hero-text h1 {
-        font-size: clamp(3.2rem, 15vw, 4.8rem);
-        line-height: 0.95;
+      font-size: clamp(3.2rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg,
+        #E8197A 0%,
+        #E8197A 10%,
+        #c14750 32%,
+        #FF5722 52%,
+        #f5820a 72%,
+        #FF9800 92%,
+        #FF9800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.25rem;
     }
 
     .hero-text p {
-        font-size: 1.1rem;
-        max-width: 90%;
+      font-size: 1.2rem;
+      color: var(--text-gray);
+      margin-bottom: 2rem;
+      line-height: 1.65;
+      max-width: 640px;
     }
 
     .cta-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
     }
 
-    .productions-grid {
-        grid-template-columns: 1fr;
-        max-width: 480px;
+    .btn {
+      padding: 0.9rem 2.1rem;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
     }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+      color: white;
+      box-shadow: 0 8px 24px rgba(232,25,122,0.28);
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(232,25,122,0.40); }
+
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary-red);
+      border: 2px solid var(--primary-red);
+    }
+
+    .btn-secondary:hover { background-color: var(--primary-red); color: white; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .scroll-arrow {
+      width: 48px;
+      height: 48px;
+      border: 2.5px solid var(--primary-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .scroll-arrow:hover { background-color: var(--primary-red); }
+
+    .scroll-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--primary-red);
+      transition: stroke 0.2s ease;
+    }
+
+    .scroll-arrow:hover svg { stroke: white; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* Sections */
+    .section-bg-light { background-color: #fafafa; }
+    .section-bg-white { background-color: #ffffff; }
+
+    .section-wrap { padding: 6rem 1.25rem; }
 
     .section-header {
-        padding: 0 1.5rem;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 3.2rem;
+      padding: 0 0.5rem;
     }
 
-    .section-wrap,
-    .productions,
-    .contact {
-        padding: 4.5rem 1.5rem;
+    .section-header h2 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--primary-red);
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
     }
+
+    .section-header p { font-size: 1.1rem; color: var(--text-gray); }
+
+    /* Productions */
+    .productions-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .production-card {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .production-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.14);
+    }
+
+    .production-poster {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      position: relative;
+      overflow: hidden;
+      background: #ededed;
+    }
+
+    .production-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .production-info { padding: 1.6rem; }
+
+    .production-info h3 {
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .production-meta {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--voila-pink);
+      margin-bottom: 0.7rem;
+    }
+
+    .production-desc {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 0.9rem;
+    }
+
+    .badge-production {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* About */
+    .about-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .about-inner p {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--text-gray);
+    }
+
+    /* Contact */
+    .contact-container { max-width: 860px; margin: 0 auto; }
 
     .contact-form {
-        padding: 2rem 1.5rem;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.09);
     }
 
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.45rem;
+      font-size: 0.92rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      background: #fafafa;
+      color: var(--text-dark);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--voila-pink);
+      background: white;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 140px; }
+
     .form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+      color: white;
+      box-shadow: 0 8px 24px rgba(232,25,122,0.22);
+    }
+
+    .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(232,25,122,0.36); }
+
+    .success-message {
+      display: none;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text-dark);
+      color: white;
+      padding: 3rem 1.25rem 1.5rem;
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
     }
 
-    .social-links {
-        justify-content: center;
-    }
-}
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
 
-    /* Mobile stretto */
-    @media (max-width: 520px) {
-        header {
-            padding: 0.6rem 1rem;
-        }
-    
-        .logo {
-            width: 46px;
-            height: 46px;
-        }
-    
-        .nav-links {
-            gap: 1.2rem;
-            font-size: 0.9rem;
-        }
-    
-        .hero {
-            padding: 6.5rem 1.2rem 3rem;
-        }
-    
-        .hero-text h1 {
-            font-size: clamp(2.8rem, 17vw, 3.8rem);
-        }
-    
-        .hero-text p {
-            font-size: 1rem;
-        }
-    
-        .cta-buttons {
-            flex-direction: column;
-            align-items: stretch;
-        }
-    
-        .btn {
-            width: 100%;
-            text-align: center;
-        }
-    
-        .section-header h2 {
-            font-size: 2.1rem;
-        }
-    
-        .production-info {
-            padding: 1.4rem;
-        }
+    .footer-brand img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
-    </style>
+    .footer-brand .motto {
+      font-style: italic;
+      font-size: 1rem;
+      color: #cccccc;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .footer-section h4 {
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
+
+    .footer-links a {
+      color: #aaaaaa;
+      text-decoration: none;
+      font-size: 0.93rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: white; }
+
+    .social-links { display: flex; gap: 0.8rem; }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid #555;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaaaaa;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-link:hover { border-color: white; color: white; transform: translateY(-2px); }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid #444;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .menu-btn { display: inline-flex; }
+      .mobile-nav { display: block; }
+
+      .hero { padding: 7.5rem 1.25rem 3.5rem; }
+      .hero-inner { text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+
+      .cta-buttons { justify-content: center; }
+      .productions-grid { grid-template-columns: 1fr; max-width: 520px; }
+
+      .section-wrap { padding: 4.8rem 1.25rem; }
+      .footer-content { grid-template-columns: 1fr; text-align: center; }
+      .social-links { justify-content: center; }
+      .footer-brand { align-items: center; }
+    }
+
+    @media (max-width: 560px) {
+      header { padding: 0.75rem 1rem; }
+      .logo { width: 46px; height: 46px; }
+
+      .hero-text h1 { font-size: clamp(2.8rem, 14vw, 3.8rem); }
+      .hero-text p { font-size: 1.02rem; }
+
+      .cta-buttons { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+
+      .section-header h2 { font-size: 2.05rem; }
+
+      .contact-form { padding: 1.6rem; }
+      .form-row { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="logo.png" alt="Q. Animation Films" class="logo" />
+      </div>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo-container">
-                <img src="logo.png" alt="Q. Animation Films" class="logo">
-            </div>
-            <ul class="nav-links">
-                <li class="productions-dropdown">
-                    <span class="productions-toggle">Latest Projects</span>
-                    <ul class="dropdown-menu">
-                        <li><a href="#productions">Dattilo</a></li>
-                        <li><a href="#productions">Drop</a></li>
-                        <li><a href="#productions">Vedi tutte...</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about">Chi siamo</a></li>
-                <li><a href="#contact">Contatti</a></li>
-            </ul>
-        </nav>
-    </header>
+      <ul class="nav-links">
+        <li class="productions-dropdown">
+          <span class="productions-toggle">Latest Projects</span>
+          <ul class="dropdown-menu">
+            <li><a href="#productions">Dattilo</a></li>
+            <li><a href="#productions">Drop</a></li>
+            <li><a href="#productions">Vedi tutte...</a></li>
+          </ul>
+        </li>
+        <li><a href="#about">Chi siamo</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
 
-    <!-- Hero -->
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>Q.ANIMATION</h1>
-            <p>Produciamo cartoni animati di qualità che emozionano e intrattengono.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Inizia un Progetto</a>
-                <a href="#productions" class="btn btn-secondary">Scopri le Produzioni</a>
-            </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Apri menu" aria-controls="mobileNav" aria-expanded="false">
+        <div class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#productions">Produzioni</a>
+      <a href="#about">Chi siamo</a>
+      <a href="#contact">Contatti</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Q.ANIMATION</h1>
+        <p>Produciamo cartoni animati di qualità che emozionano e intrattengono.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">Inizia un Progetto</a>
+          <a href="#productions" class="btn btn-secondary">Scopri le Produzioni</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#productions" class="scroll-indicator" aria-label="Scorri alle produzioni">
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M19 12l-7 7-7-7"></path>
+        </svg>
+      </div>
+    </a>
+  </section>
+
+  <!-- Productions -->
+  <section id="productions" class="section-wrap section-bg-light">
+    <div class="section-header">
+      <h2>Le nostre produzioni</h2>
+      <p>Esplora il nostro portfolio di cartoni animati e progetti in corso</p>
+    </div>
+
+    <div class="productions-grid">
+      <!-- DATTILO -->
+      <div class="production-card">
+        <div class="production-poster">
+          <img src="dattilo-poster.jpg" alt="Poster DATTILO" />
+        </div>
+        <div class="production-info">
+          <h3>DATTILO</h3>
+          <div class="production-meta">Short Film &nbsp;|&nbsp; 9' 16'' &nbsp;|&nbsp; Kids &amp; Family</div>
+          <p class="production-desc">
+            Dopo aver impulsivamente distrutto la magia che tiene in vita il suo villaggio, un ragazzo in cerca d'amore si sacrificherà per rimediare al suo errore.
+          </p>
+          <span class="badge-production">In produzione</span>
+        </div>
+      </div>
+
+      <!-- DROP -->
+      <div class="production-card">
+        <div class="production-poster">
+          <img src="drop-poster.jpg" alt="Poster DROP" />
+        </div>
+        <div class="production-info">
+          <h3>DROP</h3>
+          <div class="production-meta">Short Film &nbsp;|&nbsp; Kids &amp; Family</div>
+          <p class="production-desc">
+            Dopo aver accidentalmente distrutto la magia che protegge il suo mondo, un buffo personaggio blu affronta una tempesta per rimediare al suo errore.
+          </p>
+          <span class="badge-production">In produzione</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section-wrap section-bg-white">
+    <div class="section-header">
+      <h2>Chi siamo</h2>
+      <p>Q. Animation Films è uno studio di produzione dedicato a creare mondi immaginari che sembrano reali</p>
+    </div>
+
+    <div class="about-inner">
+      <p>
+        Dalla pre-produzione alla post-produzione, trasformiamo idee creative in magia cinematografica.
+        Il nostro team di artisti, animatori e storyteller lavora con passione per dare vita a personaggi
+        e storie che emozionano il pubblico di tutte le età.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-wrap section-bg-light">
+    <div class="contact-container">
+      <div class="section-header">
+        <h2>Contattaci</h2>
+        <p>Hai un'idea? Parliamone insieme e diamo vita al tuo progetto di animazione</p>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nome *</label>
+            <input type="text" id="name" name="name" required placeholder="Mario" />
+          </div>
+          <div class="form-group">
+            <label for="surname">Cognome *</label>
+            <input type="text" id="surname" name="surname" required placeholder="Rossi" />
+          </div>
         </div>
 
-        <a href="#productions" class="scroll-indicator">
-            <div class="scroll-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 5v14M19 12l-7 7-7-7"/>
-                </svg>
-            </div>
-        </a>
-    </section>
-
-    <!-- Productions -->
-    <section id="productions" class="section-wrap section-bg-light">
-        <div class="section-header">
-            <h2>Le nostre produzioni</h2>
-            <p>Esplora il nostro portfolio di cartoni animati e progetti in corso</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="mario@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefono</label>
+            <input type="tel" id="phone" name="phone" placeholder="+39 000 000 0000" />
+          </div>
         </div>
 
-        <div class="productions-grid">
-
-            <!-- DATTILO -->
-            <div class="production-card">
-                <div class="production-image" style="position: relative; background: #f5f5f5;">
-                    <img src="dattilo-poster.jpg" alt="DATTILO" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="production-info">
-                    <h3>DATTILO</h3>
-                    <p>Short Film | 9' 16'' | Kids & Family<br>
-                       <span style="font-style: italic; color: #999;">Dopo aver impulsivamente distrutto la magia che tiene in vita il suo villaggio, un ragazzo in cerca d'amore si sacrificherà per rimediare al suo errore.</span><br>
-                       <strong style="color: #c14750;">IN PRODUZIONE</strong></p>
-                </div>
-            </div>
-            
-            <!-- DROP -->
-            <div class="production-card">
-                <div class="production-image" style="position: relative; background: #f5f5f5;">
-                    <img src="drop-poster.jpg" alt="DROP" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="production-info">
-                    <h3>DROP</h3>
-                    <p>Short Film | Kids & Family<br>
-                       <span style="font-style: italic; color: #999;">Dopo aver accidentalmente distrutto la magia che protegge il suo mondo, un buffo personaggio blu affronta una tempesta per rimediare al suo errore.</span><br>
-                       <strong style="color: #c14750;">IN PRODUZIONE</strong></p>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section-wrap section-bg-white">
-        <div class="section-header">
-            <h2>Chi siamo</h2>
-            <p>Q. Animation Films è uno studio di produzione dedicato a creare mondi immaginari che sembrano reali</p>
-        </div>
-        <div class="about-inner">
-            <p>Dalla pre-produzione alla post-produzione, trasformiamo idee creative in magia cinematografica. Il nostro team di artisti, animatori e storyteller lavora con passione per dare vita a personaggi e storie che emozionano il pubblico di tutte le età.</p>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section-wrap section-bg-light">
-        <div class="contact-container">
-            <div class="section-header">
-                <h2>Contattaci</h2>
-                <p>Hai un'idea? Parliamone insieme e diamo vita al tuo progetto di animazione</p>
-            </div>
-
-            <form class="contact-form" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Nome *</label>
-                        <input type="text" id="name" name="name" required placeholder="Mario">
-                    </div>
-                    <div class="form-group">
-                        <label for="surname">Cognome *</label>
-                        <input type="text" id="surname" name="surname" required placeholder="Rossi">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="mario@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefono</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+39 000 000 0000">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="projectType">Tipo di Progetto *</label>
-                    <select id="projectType" name="projectType" required>
-                        <option value="">Seleziona...</option>
-                        <option value="serie-tv">Serie TV Animata</option>
-                        <option value="cortometraggio">Cortometraggio</option>
-                        <option value="lungometraggio">Lungometraggio</option>
-                        <option value="video-promozionale">Video Promozionale</option>
-                        <option value="altro">Altro</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Messaggio *</label>
-                    <textarea id="message" name="message" required placeholder="Raccontaci la tua idea..."></textarea>
-                </div>
-                <button type="submit" class="btn submit-btn">Invia Richiesta →</button>
-                <div class="success-message" id="successMessage">
-                    ✓ Messaggio inviato con successo! Ti risponderemo al più presto.
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="logo.png" alt="Q. Animation Films">
-                <span class="motto">Creating imaginary worlds that feel real</span>
-            </div>
-
-            <div class="footer-section">
-                <h4>Link Utili</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#productions">Produzioni</a></li>
-                    <li><a href="#about">Chi siamo</a></li>
-                    <li><a href="#contact">Contatti</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Seguici</h4>
-                <div class="social-links">
-                    <a href="https://it.linkedin.com/company/q-animation-films" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/qanimationfilms/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="projectType">Tipo di Progetto *</label>
+          <select id="projectType" name="projectType" required>
+            <option value="">Seleziona...</option>
+            <option value="serie-tv">Serie TV Animata</option>
+            <option value="cortometraggio">Cortometraggio</option>
+            <option value="lungometraggio">Lungometraggio</option>
+            <option value="video-promozionale">Video Promozionale</option>
+            <option value="altro">Altro</option>
+          </select>
         </div>
 
-        <div class="footer-bottom">
-            &copy; 2026 Q. Animation Films. Tutti i diritti riservati.
+        <div class="form-group">
+          <label for="message">Messaggio *</label>
+          <textarea id="message" name="message" required placeholder="Raccontaci la tua idea..."></textarea>
         </div>
-    </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const data = Object.fromEntries(new FormData(this));
-            const body = `Nome: ${data.name} ${data.surname}\nEmail: ${data.email}\nTelefono: ${data.phone||'—'}\nProgetto: ${data.projectType}\n\n${data.message}`;
-            window.location.href = `mailto:info@qanimationfilms.com?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
-            document.getElementById('successMessage').style.display = 'block';
-            this.reset();
-            setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
-        });
+        <button type="submit" class="btn submit-btn">Invia Richiesta →</button>
 
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+        <div class="success-message" id="successMessage">
+          ✓ Messaggio inviato con successo! Ti risponderemo al più presto.
+        </div>
+      </form>
+    </div>
+  </section>
 
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const cur = window.pageYOffset;
-            document.querySelector('header').style.transform =
-                (cur > lastScroll && cur > 100) ? 'translateY(-100%)' : 'translateY(0)';
-            lastScroll = cur;
-        });
-    </script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Q. Animation Films" />
+        <span class="motto">Creating imaginary worlds that feel real</span>
+      </div>
+
+      <div class="footer-section">
+        <h4>Link Utili</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#productions">Produzioni</a></li>
+          <li><a href="#about">Chi siamo</a></li>
+          <li><a href="#contact">Contatti</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Seguici</h4>
+        <div class="social-links">
+          <a href="https://it.linkedin.com/company/q-animation-films" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+
+          <a href="https://www.instagram.com/qanimationfilms/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Q. Animation Films. Tutti i diritti riservati.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    function setMenu(open) {
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = document.body.classList.contains('menu-open');
+      setMenu(!isOpen);
+    });
+
+    mobileNav.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    // Contact form -> mailto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this));
+      const body =
+`Nome: ${data.name} ${data.surname}
+Email: ${data.email}
+Telefono: ${data.phone||'—'}
+Progetto: ${data.projectType}
+
+${data.message}`;
+
+      window.location.href =
+        `mailto:info@qanimationfilms.com?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
+
+      document.getElementById('successMessage').style.display = 'block';
+      this.reset();
+      setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        const t = document.querySelector(href);
+        if (!t) return;
+        e.preventDefault();
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Header hide on scroll
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      const cur = window.pageYOffset;
+      header.style.transform = (cur > lastScroll && cur > 120) ? 'translateY(-100%)' : 'translateY(0)';
+      lastScroll = cur;
+    });
+  </script>
 </body>
 </html>
