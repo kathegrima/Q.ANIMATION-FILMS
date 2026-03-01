@@ -12,17 +12,19 @@
   <link rel="manifest" href="site.webmanifest">
 
   <style>
-    :root {
-      @font-face {
+    @font-face {
       font-family: 'Indie Flower';
-      src: 
+      src:
         local('Indie Flower'),
         url('indieflower-regular-webfont.woff2') format('woff2'),
         url('indieflower-regular-webfont.woff') format('woff'),
         url('indieflower-regular-webfont.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
-      font-display
+      font-display: swap;
+    }  /* ← QUESTA PARENTESI CHIUDE @font-face */
+
+    :root {
       --primary-red: #c14750;
       --primary-dark: #8b3339;
       --bg-white: #ffffff;
@@ -34,7 +36,6 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
 
     body {
       font-family: 'Inter', sans-serif;
@@ -163,28 +164,26 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;       /* ← CENTRATO SEMPRE */
+      justify-content: center;
       padding: 8rem 5vw 4rem;
       background: #ffffff;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-text {
-      text-align: center;            /* ← CENTRATO SEMPRE */
-    }
+    .hero-text { text-align: center; }
 
     .hero-text h1 {
       font-family: 'Indie Flower', cursive;
       font-size: clamp(3.2rem, 13vw, 12rem);
-      font-weight: 900;
-      line-height: 0.88;
-      letter-spacing: -0.02em;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.01em;
       background: linear-gradient(90deg,
-      #c14750 0%,     /* Inizia con il rosso del logo */
-      #c14750 60%,    /* Mantiene il rosso per gran parte della scritta "Q.ANIMAT..." */
-      #d6404b 85%,    /* Inizia a sfumare verso l'arancione scuro verso la fine */
-      #d6404b 100%);  /* Finisce con arancione sull'ultima lettera */
+        #c14750 0%,
+        #c14750 60%,
+        #d6404b 85%,
+        #d6404b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -197,7 +196,7 @@
       margin-bottom: 2.5rem;
       line-height: 1.6;
       max-width: 600px;
-      margin-left: auto;             /* ← CENTRATO SEMPRE */
+      margin-left: auto;
       margin-right: auto;
     }
 
@@ -205,7 +204,7 @@
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      justify-content: center;       /* ← CENTRATO SEMPRE */
+      justify-content: center;
     }
 
     .btn {
@@ -242,7 +241,7 @@
       color: white;
     }
 
-    /* Scroll indicator */
+    /* ── Scroll indicator ── */
     .scroll-indicator {
       position: absolute;
       bottom: 2rem;
@@ -297,7 +296,7 @@
     .section-header h2 {
       font-family: 'Indie Flower', cursive;
       font-size: 3.2rem;
-      font-weight: 900;
+      font-weight: 400;
       color: var(--primary-red);
       margin-bottom: 0.8rem;
     }
@@ -349,33 +348,6 @@
       color: var(--text-dark);
       margin-bottom: 0.5rem;
       letter-spacing: 0.01em;
-    }
-
-    .production-meta {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--voila-pink);
-      margin-bottom: 0.7rem;
-    }
-
-    .production-desc {
-      font-size: 0.92rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-      font-style: italic;
-      margin-bottom: 0.8rem;
-    }
-
-    .badge-production {
-      display: inline-block;
-      background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      text-transform: uppercase;
     }
 
     /* ── About ── */
@@ -539,11 +511,8 @@
     @media (max-width: 968px) {
       header { padding: 0.75rem 1.25rem; }
       .nav-links { display: none; }
-
       .hero { padding: 7rem 1.5rem 3rem; }
-
       .hero-text p { font-size: 1.1rem; }
-
       .productions-grid { grid-template-columns: 1fr; max-width: 520px; }
       .form-row { grid-template-columns: 1fr; gap: 1rem; }
       .footer-content { grid-template-columns: 1fr; text-align: center; }
@@ -556,12 +525,7 @@
       header { padding: 0.6rem 1rem; }
       .logo { width: 46px; height: 46px; }
       .brand-text { font-size: 0.95rem; }
-
-      .hero-text h1 {
-        font-size: clamp(2.8rem, 14vw, 3.8rem);
-        line-height: 0.95;
-      }
-
+      .hero-text h1 { font-size: clamp(2.8rem, 14vw, 3.8rem); line-height: 1.05; }
       .cta-buttons { flex-direction: column; align-items: stretch; }
       .btn { width: 100%; text-align: center; }
       .section-header h2 { font-size: 2.1rem; }
