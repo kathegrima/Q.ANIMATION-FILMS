@@ -202,18 +202,17 @@
 
     .hero-watermark {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;             /* occupa quasi tutta la hero */
-      max-width: 1200px;
-      max-height: calc(100vh - 9rem); /* finisce sopra la freccia */
-      object-fit: cover; 
-      opacity: 0.35;          /* era 0.06 — troppo bassa per questa immagine */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 6rem); /* lascia spazio per la freccia in basso */
+      object-fit: cover;          /* ← copre tutta l'area, taglia i bordi se necessario */
+      opacity: 0.35;
       pointer-events: none;
       user-select: none;
       z-index: 0;
     }
+
 
     
     /* assicurati che il testo stia sopra */
