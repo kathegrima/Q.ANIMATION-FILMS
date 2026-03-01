@@ -205,14 +205,16 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 70%;           /* regola la dimensione a piacere */
-      max-width: 800px;
-      bottom: 6rem;         /* lascia spazio sopra la freccia */
-      opacity: 0.35;        /* più basso = più sottile, tipico 0.04–0.10 */
-      pointer-events: none; /* non blocca i click */
+      width: 90%;             /* occupa quasi tutta la hero */
+      max-width: 1200px;
+      max-height: calc(100vh - 9rem); /* finisce sopra la freccia */
+      object-fit: contain;
+      opacity: 0.35;          /* era 0.06 — troppo bassa per questa immagine */
+      pointer-events: none;
       user-select: none;
       z-index: 0;
     }
+
     
     /* assicurati che il testo stia sopra */
     .hero-text {
