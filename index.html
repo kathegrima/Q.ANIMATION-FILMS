@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q. Animation Films - Produzione Cartoni Animati</title>
+    <style>
+        :root {
+            --primary-red: #c14750;
+            --primary-dark: #8b3339;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d2d;
+            --text-gray: #666666;
+            --voila-pink: #E8197A;
+            --voila-red: #FF5722;
+            --voila-orange: #FF9800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--voila-pink);
+        }
+
+        .productions-dropdown {
+            position: relative;
+        }
+
+        .productions-toggle {
+            cursor: pointer;
+            padding: 0.45rem 1rem;
+            border: 1.5px solid var(--text-dark);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .productions-toggle:hover {
+            background-color: var(--text-dark);
+            color: white;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 0.75rem;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            z-index: 1001;
+        }
+
+        .productions-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.45rem 0.9rem;
+            color: var(--text-dark);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--voila-pink);
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 8rem 5vw 4rem;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(5rem, 13vw, 12rem);
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg,
+                #E8197A 0%,
+                #E8197A 8%,
+                #c14750 28%,
+                #FF5722 50%,
+                #f5820a 68%,
+                #FF9800 88%,
+                #FF9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+            color: white;
+            box-shadow: 0 8px 24px rgba(232,25,122,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(232,25,122,0.45);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-red);
+            color: white;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 10;
+            text-decoration: none;
+        }
+
+        .scroll-arrow {
+            width: 48px;
+            height: 48px;
+            border: 2.5px solid var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-arrow:hover {
+            background-color: var(--primary-red);
+        }
+
+        .scroll-arrow svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--primary-red);
+            transition: stroke 0.3s ease;
+        }
+
+        .scroll-arrow:hover svg {
+            stroke: white;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Sections */
+        .section-bg-light { background-color: #fafafa; }
+        .section-bg-white { background-color: #ffffff; }
+
+        .section-wrap {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+        }
+
+        /* Productions grid */
+        .productions-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .production-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .production-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* KEY FIX: position relative + overflow hidden so poster images stay inside */
+        .production-poster {
+            width: 100%;
+            aspect-ratio: 2/3;
+            position: relative;
+            overflow: hidden;
+            background: #e8e8e8;
+        }
+
+        .production-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .production-info {
+            padding: 1.8rem;
+        }
+
+        .production-info h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .production-meta {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--voila-pink);
+            margin-bottom: 0.7rem;
+        }
+
+        .production-desc {
+            font-size: 0.92rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .badge-production {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        /* About */
+        .about-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-inner p {
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: var(--text-gray);
+        }
+
+        /* Contact */
+        .contact-container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.09);
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s, background 0.3s;
+            background: #fafafa;
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--voila-pink);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 0.5rem;
+            background: linear-gradient(90deg, var(--voila-pink), var(--voila-red));
+            color: white;
+            box-shadow: 0 8px 24px rgba(232,25,122,0.25);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(232,25,122,0.4);
+        }
+
+        .success-message {
+            display: none;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-brand img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .footer-brand .motto {
+            font-style: italic;
+            font-size: 1rem;
+            color: #cccccc;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.93rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1.5px solid #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaaaaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: white;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero { padding: 7rem 1.5rem 4rem; }
+            .nav-links { display: none; }
+            .productions-grid { grid-template-columns: 1fr; max-width: 420px; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            .section-header h2 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; }
+            .contact-form { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dfda338d-c540-41ef-a9cb-6271fc5fd001" alt="Q. Animation Films" class="logo">
+            </div>
+            <ul class="nav-links">
+                <li class="productions-dropdown">
+                    <span class="productions-toggle">Latest Projects</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="#productions">Dattilo</a></li>
+                        <li><a href="#productions">Drop</a></li>
+                        <li><a href="#productions">Vedi tutte...</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Q.ANIMATION</h1>
+            <p>Produciamo cartoni animati di qualità che emozionano e intrattengono.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Inizia un Progetto</a>
+                <a href="#productions" class="btn btn-secondary">Scopri le Produzioni</a>
+            </div>
+        </div>
+
+        <a href="#productions" class="scroll-indicator">
+            <div class="scroll-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </a>
+    </section>
+
+    <!-- Productions -->
+    <section id="productions" class="section-wrap section-bg-light">
+        <div class="section-header">
+            <h2>Le Nostre Produzioni</h2>
+            <p>Esplora il nostro portfolio di cartoni animati e progetti in corso</p>
+        </div>
+
+        <div class="productions-grid">
+
+            <!-- DATTILO -->
+            <div class="production-card">
+                <div class="production-poster">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/a68edce4-70c8-4918-ac4c-ab14185c2845" alt="DATTILO Poster">
+                </div>
+                <div class="production-info">
+                    <h3>DATTILO</h3>
+                    <div class="production-meta">Short Film &nbsp;|&nbsp; 9' 16'' &nbsp;|&nbsp; Kids &amp; Family</div>
+                    <p class="production-desc">After impulsively destroying the magic that keeps his village alive, a boy in need of love will sacrifice himself to fix his mistake.</p>
+                    <span class="badge-production">Currently in Production</span>
+                </div>
+            </div>
+
+            <!-- DROP -->
+            <div class="production-card">
+                <div class="production-poster">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/d5d230e0-60a9-4f25-a252-1674730ed2f8" alt="DROP Poster">
+                </div>
+                <div class="production-info">
+                    <h3>DROP</h3>
+                    <div class="production-meta">Short Film &nbsp;|&nbsp; Kids &amp; Family</div>
+                    <p class="production-desc">Una storia commovente che esplora temi universali attraverso personaggi indimenticabili e un mondo visivamente straordinario.</p>
+                    <span class="badge-production">Currently in Production</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section-wrap section-bg-white">
+        <div class="section-header">
+            <h2>Chi Siamo</h2>
+            <p>Q. Animation Films è uno studio di produzione dedicato a creare mondi immaginari che sembrano reali</p>
+        </div>
+        <div class="about-inner">
+            <p>Dalla pre-produzione alla post-produzione, trasformiamo idee creative in magia cinematografica. Il nostro team di artisti, animatori e storyteller lavora con passione per dare vita a personaggi e storie che emozionano il pubblico di tutte le età.</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-wrap section-bg-light">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Contattaci</h2>
+                <p>Hai un'idea? Parliamone insieme e diamo vita al tuo progetto di animazione</p>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" name="name" required placeholder="Mario">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Cognome *</label>
+                        <input type="text" id="surname" name="surname" required placeholder="Rossi">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="mario@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefono</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+39 000 000 0000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectType">Tipo di Progetto *</label>
+                    <select id="projectType" name="projectType" required>
+                        <option value="">Seleziona...</option>
+                        <option value="serie-tv">Serie TV Animata</option>
+                        <option value="cortometraggio">Cortometraggio</option>
+                        <option value="lungometraggio">Lungometraggio</option>
+                        <option value="video-promozionale">Video Promozionale</option>
+                        <option value="altro">Altro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Messaggio *</label>
+                    <textarea id="message" name="message" required placeholder="Raccontaci la tua idea..."></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">Invia Richiesta →</button>
+                <div class="success-message" id="successMessage">
+                    ✓ Messaggio inviato con successo! Ti risponderemo al più presto.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dfda338d-c540-41ef-a9cb-6271fc5fd001" alt="Q. Animation Films">
+                <span class="motto">Creating imaginary worlds that feel real</span>
+            </div>
+
+            <div class="footer-section">
+                <h4>Link Utili</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#productions">Produzioni</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Seguici</h4>
+                <div class="social-links">
+                    <a href="https://it.linkedin.com/company/q-animation-films" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/qanimationfilms/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 Q. Animation Films. Tutti i diritti riservati.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(this));
+            const body = `Nome: ${data.name} ${data.surname}\nEmail: ${data.email}\nTelefono: ${data.phone||'—'}\nProgetto: ${data.projectType}\n\n${data.message}`;
+            window.location.href = `mailto:info@qanimationfilms.com?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const t = document.querySelector(a.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const cur = window.pageYOffset;
+            document.querySelector('header').style.transform =
+                (cur > lastScroll && cur > 100) ? 'translateY(-100%)' : 'translateY(0)';
+            lastScroll = cur;
+        });
+    </script>
+</body>
+</html>
