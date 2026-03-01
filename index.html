@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Q. Animation Films | Cartoni che emozionano</title>
 
-
   <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  
   <style>
     :root {
       --primary-red: #c14750;
@@ -25,11 +23,7 @@
       --voila-orange: #FF9800;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;500;700;900&display=swap');
 
@@ -40,16 +34,12 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Nunito', sans-serif;
-    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Nunito', sans-serif; }
 
-    /* Header */
+    /* ── Header ── */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       background-color: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       padding: 1rem 2rem;
@@ -69,14 +59,21 @@
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 0.75rem; /*LOGO A SX*/
+      gap: 0.75rem;
     }
 
     .logo {
-      width: 55px;
-      height: 55px;
+      width: 55px; height: 55px;
       border-radius: 50%;
       object-fit: cover;
+    }
+
+    .brand-text {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      letter-spacing: 0.02em;
     }
 
     .nav-links {
@@ -94,13 +91,9 @@
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--voila-pink);
-    }
+    .nav-links a:hover { color: var(--voila-pink); }
 
-    .productions-dropdown {
-      position: relative;
-    }
+    .productions-dropdown { position: relative; }
 
     .productions-toggle {
       cursor: pointer;
@@ -140,9 +133,7 @@
       transform: translateY(0);
     }
 
-    .dropdown-menu li {
-      list-style: none;
-    }
+    .dropdown-menu li { list-style: none; }
 
     .dropdown-menu a {
       display: block;
@@ -158,16 +149,20 @@
       color: white;
     }
 
-    /* Hero */
+    /* ── Hero ── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;       /* ← CENTRATO SEMPRE */
       padding: 8rem 5vw 4rem;
       background: #ffffff;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-text {
+      text-align: center;            /* ← CENTRATO SEMPRE */
     }
 
     .hero-text h1 {
@@ -176,13 +171,8 @@
       line-height: 0.88;
       letter-spacing: -0.02em;
       background: linear-gradient(90deg,
-        #E8197A 0%,
-        #E8197A 8%,
-        #c14750 28%,
-        #FF5722 50%,
-        #f5820a 68%,
-        #FF9800 88%,
-        #FF9800 100%);
+        #E8197A 0%, #E8197A 8%, #c14750 28%,
+        #FF5722 50%, #f5820a 68%, #FF9800 88%, #FF9800 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -195,12 +185,15 @@
       margin-bottom: 2.5rem;
       line-height: 1.6;
       max-width: 600px;
+      margin-left: auto;             /* ← CENTRATO SEMPRE */
+      margin-right: auto;
     }
 
     .cta-buttons {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      justify-content: center;       /* ← CENTRATO SEMPRE */
     }
 
     .btn {
@@ -253,8 +246,7 @@
     }
 
     .scroll-arrow {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       border: 2.5px solid var(--primary-red);
       border-radius: 50%;
       display: flex;
@@ -263,33 +255,26 @@
       transition: all 0.3s ease;
     }
 
-    .scroll-arrow:hover {
-      background-color: var(--primary-red);
-    }
+    .scroll-arrow:hover { background-color: var(--primary-red); }
 
     .scroll-arrow svg {
-      width: 22px;
-      height: 22px;
+      width: 22px; height: 22px;
       stroke: var(--primary-red);
       transition: stroke 0.3s ease;
     }
 
-    .scroll-arrow:hover svg {
-      stroke: white;
-    }
+    .scroll-arrow:hover svg { stroke: white; }
 
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50%       { transform: translateX(-50%) translateY(8px); }
     }
 
-    /* Sections */
+    /* ── Sections ── */
     .section-bg-light { background-color: #fafafa; }
     .section-bg-white { background-color: #ffffff; }
 
-    .section-wrap {
-      padding: 6rem 2rem;
-    }
+    .section-wrap { padding: 6rem 2rem; }
 
     .section-header {
       text-align: center;
@@ -304,12 +289,9 @@
       margin-bottom: 0.8rem;
     }
 
-    .section-header p {
-      font-size: 1.15rem;
-      color: var(--text-gray);
-    }
+    .section-header p { font-size: 1.15rem; color: var(--text-gray); }
 
-    /* Productions grid */
+    /* ── Productions ── */
     .productions-grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -332,7 +314,6 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.15);
     }
 
-    /* Poster (fix: height/ratio definito anche senza inline-style) */
     .production-poster {
       width: 100%;
       aspect-ratio: 2/3;
@@ -342,15 +323,12 @@
     }
 
     .production-poster img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .production-info {
-      padding: 1.8rem;
-    }
+    .production-info { padding: 1.8rem; }
 
     .production-info h3 {
       font-size: 1.6rem;
@@ -387,12 +365,8 @@
       text-transform: uppercase;
     }
 
-    /* About */
-    .about-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    /* ── About ── */
+    .about-inner { max-width: 860px; margin: 0 auto; text-align: center; }
 
     .about-inner p {
       font-size: 1.15rem;
@@ -400,11 +374,8 @@
       color: var(--text-gray);
     }
 
-    /* Contact */
-    .contact-container {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    /* ── Contact ── */
+    .contact-container { max-width: 860px; margin: 0 auto; }
 
     .contact-form {
       background: white;
@@ -413,9 +384,7 @@
       box-shadow: 0 16px 50px rgba(0,0,0,0.09);
     }
 
-    .form-group {
-      margin-bottom: 1.4rem;
-    }
+    .form-group { margin-bottom: 1.4rem; }
 
     .form-group label {
       display: block;
@@ -447,16 +416,9 @@
       background: white;
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 140px;
-    }
+    .form-group textarea { resize: vertical; min-height: 140px; }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.4rem;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 
     .submit-btn {
       width: 100%;
@@ -482,7 +444,7 @@
       font-weight: 600;
     }
 
-    /* Footer */
+    /* ── Footer ── */
     footer {
       background-color: var(--text-dark);
       color: white;
@@ -497,15 +459,10 @@
       gap: 3rem;
     }
 
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .footer-brand { display: flex; flex-direction: column; gap: 1rem; }
 
     .footer-brand img {
-      width: 72px;
-      height: 72px;
+      width: 72px; height: 72px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -525,13 +482,8 @@
       font-weight: 700;
     }
 
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
 
     .footer-links a {
       color: #aaaaaa;
@@ -540,18 +492,12 @@
       transition: color 0.3s;
     }
 
-    .footer-links a:hover {
-      color: white;
-    }
+    .footer-links a:hover { color: white; }
 
-    .social-links {
-      display: flex;
-      gap: 0.8rem;
-    }
+    .social-links { display: flex; gap: 0.8rem; }
 
     .social-link {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border: 1.5px solid #555;
       border-radius: 50%;
       display: flex;
@@ -576,46 +522,19 @@
       font-size: 0.85rem;
     }
 
-    /* Responsive (unico set, senza duplicati) */
+    /* ── Responsive ── */
     @media (max-width: 968px) {
       header { padding: 0.75rem 1.25rem; }
       .nav-links { display: none; }
 
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;  /* ← CAMBIA da flex-start a center */
-        padding: 8rem 5vw 4rem;
-        background: #ffffff;
-        position: relative;
-        overflow: hidden;
-      }
+      .hero { padding: 7rem 1.5rem 3rem; }
 
-
-      .hero-text {
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .hero-text p {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 32rem;
-        font-size: 1.1rem;
-      }
-
-      .cta-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+      .hero-text p { font-size: 1.1rem; }
 
       .productions-grid { grid-template-columns: 1fr; max-width: 520px; }
       .form-row { grid-template-columns: 1fr; gap: 1rem; }
       .footer-content { grid-template-columns: 1fr; text-align: center; }
       .social-links { justify-content: center; }
-
       .section-wrap { padding: 4.5rem 1.5rem; }
       .contact-form { padding: 2rem 1.5rem; }
     }
@@ -623,20 +542,14 @@
     @media (max-width: 520px) {
       header { padding: 0.6rem 1rem; }
       .logo { width: 46px; height: 46px; }
+      .brand-text { font-size: 0.95rem; }
 
       .hero-text h1 {
         font-size: clamp(2.8rem, 14vw, 3.8rem);
         line-height: 0.95;
-        max-width: 100%;
-        overflow-wrap: anywhere;
-        word-break: break-word;
       }
 
-      .cta-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
+      .cta-buttons { flex-direction: column; align-items: stretch; }
       .btn { width: 100%; text-align: center; }
       .section-header h2 { font-size: 2.1rem; }
       .production-info { padding: 1.4rem; }
@@ -679,7 +592,6 @@
         <a href="#productions" class="btn btn-secondary">Scopri le produzioni</a>
       </div>
     </div>
-
     <a href="#productions" class="scroll-indicator">
       <div class="scroll-arrow">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -695,7 +607,6 @@
       <h2>Le nostre produzioni</h2>
       <p>Esplora il nostro portfolio di cartoni animati e progetti in corso</p>
     </div>
-
     <div class="productions-grid">
 
       <!-- DATTILO -->
@@ -707,10 +618,10 @@
           <h3>DATTILO</h3>
           <p>
             Short Film | 11' | Kids &amp; Family<br>
-            <span style="font-style: italic; color: #999;">
+            <span style="font-style:italic;color:#999">
               Dopo aver impulsivamente distrutto la magia che tiene in vita il suo villaggio, un ragazzo in cerca d'amore si sacrificherà per rimediare al suo errore.
             </span><br>
-            <strong style="color: #c14750;">IN PRODUZIONE</strong>
+            <strong style="color:#c14750">IN PRODUZIONE</strong>
           </p>
         </div>
       </div>
@@ -724,10 +635,10 @@
           <h3>DROP</h3>
           <p>
             Short Film | Kids &amp; Family<br>
-            <span style="font-style: italic; color: #999;">
+            <span style="font-style:italic;color:#999">
               Una goccia di pioggia è spaventata di dover cadere dal cielo. Troverà il coraggio di affrontare il vuoto e di conoscere se stessa?
             </span><br>
-            <strong style="color: #c14750;">AL CINEMA</strong>
+            <strong style="color:#c14750">AL CINEMA</strong>
           </p>
         </div>
       </div>
@@ -744,7 +655,8 @@
     <div class="about-inner">
       <p>
         Dalla pre-produzione alla post-produzione, trasformiamo idee creative in magia cinematografica.
-        Il nostro team di artisti, animatori e storyteller lavora con passione per dare vita a personaggi e storie che emozionano il pubblico di tutte le età.
+        Il nostro team di artisti, animatori e storyteller lavora con passione per dare vita a personaggi
+        e storie che emozionano il pubblico di tutte le età.
       </p>
     </div>
   </section>
@@ -756,7 +668,6 @@
         <h2>Contattaci</h2>
         <p>Hai un'idea? Parliamone insieme e diamo vita al tuo progetto di animazione</p>
       </div>
-
       <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div class="form-group">
@@ -768,7 +679,6 @@
             <input type="text" id="surname" name="surname" required placeholder="Rossi">
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group">
             <label for="email">Email *</label>
@@ -779,7 +689,6 @@
             <input type="tel" id="phone" name="phone" placeholder="+39 000 000 0000">
           </div>
         </div>
-
         <div class="form-group">
           <label for="projectType">Tipo di Progetto *</label>
           <select id="projectType" name="projectType" required>
@@ -791,14 +700,11 @@
             <option value="altro">Altro</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="message">Messaggio *</label>
           <textarea id="message" name="message" required placeholder="Raccontaci la tua idea..."></textarea>
         </div>
-
         <button type="submit" class="btn submit-btn">Invia Richiesta →</button>
-
         <div class="success-message" id="successMessage">
           ✓ Messaggio inviato con successo! Ti risponderemo al più presto.
         </div>
@@ -813,7 +719,6 @@
         <img src="logo.png" alt="Q. Animation Films">
         <span class="motto">New. Independent. Creative.</span>
       </div>
-
       <div class="footer-section">
         <h4>Link Utili</h4>
         <ul class="footer-links">
@@ -823,7 +728,6 @@
           <li><a href="#contact">Contatti</a></li>
         </ul>
       </div>
-
       <div class="footer-section">
         <h4>Seguici</h4>
         <div class="social-links">
@@ -844,7 +748,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       &copy; 2026 Q. Animation Films. Tutti i diritti riservati.
     </div>
@@ -877,5 +780,6 @@
       lastScroll = cur;
     });
   </script>
+
 </body>
 </html>
