@@ -171,8 +171,10 @@
       line-height: 0.88;
       letter-spacing: -0.02em;
       background: linear-gradient(90deg,
-        #E8197A 0%, #E8197A 8%, #c14750 28%,
-        #FF5722 50%, #f5820a 68%, #FF9800 88%, #FF9800 100%);
+      #c14750 0%,     /* Inizia con il rosso del logo */
+      #c14750 60%,    /* Mantiene il rosso per gran parte della scritta "Q.ANIMAT..." */
+      #FF5722 85%,    /* Inizia a sfumare verso l'arancione scuro verso la fine */
+      #FF9800 100%);  /* Finisce con arancione sull'ultima lettera */
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
