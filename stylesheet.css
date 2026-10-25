@@ -1,11 +1,7 @@
 @font-face {
-    font-family: 'Indie Flower';
-    src: url('IndieFlower.woff2') format('woff2'),
-        url('IndieFlower.woff') format('woff'),
-        url('IndieFlower.ttf') format('truetype'),
-        url('IndieFlower.svg#IndieFlower') format('svg');
+    font-family: 'Quaint';
+    src: url('Quaint.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-
