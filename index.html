@@ -22,12 +22,28 @@
     }
 
     
+    
+        
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      text-align: center;
+    }
+    
     .hero-logo {
       display: block;
       width: 180px;
       height: auto;
       margin: 0 auto 1.5rem;
     }
+
+    
+    .hero-text h1 {
+      font-family: 'Quaint', sans-serif;
+      color: #000000;
+    }
+
 
 
     /*
@@ -599,17 +615,23 @@
   </header>
 
   <!-- Hero -->
+ 
   <section id="home" class="hero">
-    <img src="filigrana.png" alt="" class="hero-watermark"> <!-- ← AGGIUNGI -->
-    <img src="logo.png" alt="Quaint Animation" class="hero-logo">
+    <img src="filigrana.png" alt="" class="hero-watermark">
+  
     <div class="hero-text">
+      <img src="logo.png" alt="Quaint Animation" class="hero-logo">
+  
       <h1>Quaint Animation</h1>
+  
       <p>Produciamo cartoni animati di qualità che emozionano e intrattengono.</p>
+  
       <div class="cta-buttons">
         <a href="#contact" class="btn btn-primary">Inizia un progetto</a>
         <a href="#productions" class="btn btn-secondary">Scopri le produzioni</a>
       </div>
     </div>
+  
     <a href="#productions" class="scroll-indicator">
       <div class="scroll-arrow">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -618,6 +640,7 @@
       </div>
     </a>
   </section>
+
 
   <!-- Productions -->
   <section id="productions" class="section-wrap section-bg-light">
