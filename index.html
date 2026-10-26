@@ -12,6 +12,17 @@
   <link rel="manifest" href="site.webmanifest">
 
   <style>
+    
+    @font-face {
+      font-family: 'Quaint';
+      src: url('./Quaint.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+
+    /*
     @font-face {
       font-family: 'Indie Flower';
       src:
@@ -22,7 +33,7 @@
       font-weight: normal;
       font-style: normal;
       font-display: swap;
-    }  /* ← QUESTA PARENTESI CHIUDE @font-face */
+    }  /* ← QUESTA PARENTESI CHIUDE @font-face */ 
 
     :root {
       --primary-red: #c14750;
@@ -174,7 +185,8 @@
     .hero-text { text-align: center; }
 
     .hero-text h1 {
-      font-family: 'Indie Flower', cursive;
+      /*font-family: 'Indie Flower', cursive;*/
+      font-family: 'Quaint', sans-serif;
       font-size: clamp(3.2rem, 13vw, 12rem);
       font-weight: 400;
       line-height: 1;
