@@ -11,8 +11,28 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-460DTCWE42"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-460DTCWE42', {
+      send_page_view: true
+    });
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "z4u3u0uo2v");
+  </script>
+
   <style>
-    
     @font-face {
       font-family: 'Quaint';
       src: url('./Quaint.otf') format('opentype');
@@ -21,9 +41,6 @@
       font-display: swap;
     }
 
-    
-    
-        
     .hero-text {
       position: relative;
       z-index: 1;
@@ -38,26 +55,10 @@
       margin: 0 auto 1.5rem;
     }
 
-    
     .hero-text h1 {
       font-family: 'Quaint', sans-serif;
       color: #000000;
     }
-
-
-
-    /*
-    @font-face {
-      font-family: 'Indie Flower';
-      src:
-        local('Indie Flower'),
-        url('indieflower-regular-webfont.woff2') format('woff2'),
-        url('indieflower-regular-webfont.woff') format('woff'),
-        url('indieflower-regular-webfont.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }  /* ← QUESTA PARENTESI CHIUDE @font-face */ 
 
     :root {
       --primary-red: #c14750;
@@ -209,24 +210,14 @@
     .hero-text { text-align: center; }
 
     .hero-text h1 {
-      /*font-family: 'Indie Flower', cursive;*/
       font-family: 'Quaint', sans-serif;
       font-size: clamp(3rem, 7vw, 7rem);
       font-weight: 400;
       line-height: 1;
       letter-spacing: 0.01em;
-      /*background: linear-gradient(90deg,
-        #c14750 0%,
-        #c14750 60%,
-        #d6404b 85%,
-        #d6404b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;*/
       background: none;
       -webkit-text-fill-color: #000000;
       color: #000000;
-      
       margin-bottom: 2rem;
     }
 
@@ -245,23 +236,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 6rem); /* lascia spazio per la freccia in basso */
-      object-fit: cover;          /* ← copre tutta l'area, taglia i bordi se necessario */
+      height: calc(100% - 6rem);
+      object-fit: cover;
       opacity: 0.35;
       pointer-events: none;
       user-select: none;
       z-index: 0;
     }
 
-
-    
-    /* assicurati che il testo stia sopra */
     .hero-text {
       position: relative;
       z-index: 1;
     }
 
-    
     .cta-buttons {
       display: flex;
       gap: 1rem;
@@ -356,9 +343,8 @@
     }
 
     .section-header h2 {
-      /*font-family: 'Indie Flower', cursive;*/
       font-size: 3.2rem;
-      font-weight: 900; /*400*/
+      font-weight: 900;
       color: var(--primary-red);
       margin-bottom: 0.8rem;
     }
@@ -615,7 +601,6 @@
   </header>
 
   <!-- Hero -->
- 
   <section id="home" class="hero">
     <img src="filigrana.png" alt="" class="hero-watermark">
   
@@ -641,16 +626,16 @@
     </a>
   </section>
 
-
   <!-- Productions -->
   <section id="productions" class="section-wrap section-bg-light">
     <div class="section-header">
       <h2>Le nostre produzioni</h2>
       <p>Esplora il nostro portfolio di cartoni animati e progetti in corso</p>
     </div>
+
     <div class="productions-grid">
 
-<!-- DROP -->
+      <!-- DROP -->
       <div class="production-card">
         <div class="production-poster">
           <img src="drop-poster.jpg" alt="DROP">
@@ -667,7 +652,7 @@
         </div>
       </div>
 
-       <!-- DATTILO -->
+      <!-- DATTILO -->
       <div class="production-card">
         <div class="production-poster">
           <img src="dattilo-poster.jpg" alt="DATTILO">
@@ -684,8 +669,7 @@
         </div>
       </div>
 
-
-  <!-- STELLA MARINA -->
+      <!-- STELLA MARINA -->
       <div class="production-card">
         <div class="production-poster">
           <img src="stella-poster.jpg" alt="STELLA MARINA">
@@ -700,11 +684,9 @@
             <strong style="color:#c14750">IN PRODUZIONE</strong>
           </p>
         </div>
-      </div> 
+      </div>
 
-       
-
-        <!-- ITALA -->
+      <!-- ITALA -->
       <div class="production-card">
         <div class="production-poster">
           <img src="itala-poster.jpg" alt="ITALA">
@@ -719,9 +701,9 @@
             <strong style="color:#c14750">IN SVILUPPO</strong>
           </p>
         </div>
-      </div>  
+      </div>
 
-  <!-- SILVER -->
+      <!-- SILVER -->
       <div class="production-card">
         <div class="production-poster">
           <img src="silver-poster.jpg" alt="SILVER">
@@ -736,9 +718,9 @@
             <strong style="color:#c14750">IN SVILUPPO</strong>
           </p>
         </div>
-      </div> 
+      </div>
 
- <!-- VAYA -->
+      <!-- VAYA -->
       <div class="production-card">
         <div class="production-poster">
           <img src="vaya-poster.jpg" alt="VAYA">
@@ -748,14 +730,14 @@
           <p>
             TV Series | 15x15'/23' | Kids &amp; Family<br>
             <span style="font-style:italic;color:#999">
-             In una Terra devastata dall'apocalisse, un'archeologa di origini italiane affronta un viaggio per riscoprire l'Italia ormai sommersa da secoli e salvare il pianeta.
+              In una Terra devastata dall'apocalisse, un'archeologa di origini italiane affronta un viaggio per riscoprire l'Italia ormai sommersa da secoli e salvare il pianeta.
             </span><br>
             <strong style="color:#c14750">IN SVILUPPO</strong>
           </p>
         </div>
-      </div> 
-      
-    <!-- HALLOWEEN HIJINKS -->
+      </div>
+
+      <!-- HALLOWEEN HIJINKS -->
       <div class="production-card">
         <div class="production-poster">
           <img src="halloween-poster.jpg" alt="HALLOWEEN HIJINKS">
@@ -770,10 +752,8 @@
             <strong style="color:#c14750">IN SVILUPPO</strong>
           </p>
         </div>
-      </div> 
+      </div>
 
-      
-      
       <!-- FLUCO -->
       <div class="production-card">
         <div class="production-poster">
@@ -790,12 +770,6 @@
           </p>
         </div>
       </div>
-      
-     
-
-     
-
-      
 
     </div>
   </section>
@@ -822,6 +796,7 @@
         <h2>Contattaci</h2>
         <p>Hai un'idea? Parliamone insieme e diamo vita al tuo progetto di animazione</p>
       </div>
+
       <form class="contact-form" id="contactForm">
         <div class="form-row">
           <div class="form-group">
@@ -833,6 +808,7 @@
             <input type="text" id="surname" name="surname" required placeholder="Rossi">
           </div>
         </div>
+
         <div class="form-row">
           <div class="form-group">
             <label for="email">Email *</label>
@@ -843,6 +819,7 @@
             <input type="tel" id="phone" name="phone" placeholder="+39 000 000 0000">
           </div>
         </div>
+
         <div class="form-group">
           <label for="projectType">Tipo di Progetto *</label>
           <select id="projectType" name="projectType" required>
@@ -854,11 +831,14 @@
             <option value="altro">Altro</option>
           </select>
         </div>
+
         <div class="form-group">
           <label for="message">Messaggio *</label>
           <textarea id="message" name="message" required placeholder="Raccontaci la tua idea..."></textarea>
         </div>
+
         <button type="submit" class="btn submit-btn">Invia Richiesta →</button>
+
         <div class="success-message" id="successMessage">
           ✓ Messaggio inviato con successo! Ti risponderemo al più presto.
         </div>
@@ -873,6 +853,7 @@
         <img src="logo.png" alt="Quaint Animation">
         <span class="motto">Quaint dreams' believers to Creative storytellers.</span>
       </div>
+
       <div class="footer-section">
         <h4>Link Utili</h4>
         <ul class="footer-links">
@@ -882,6 +863,7 @@
           <li><a href="#contact">Contatti</a></li>
         </ul>
       </div>
+
       <div class="footer-section">
         <h4>Seguici</h4>
         <div class="social-links">
@@ -902,36 +884,157 @@
         </div>
       </div>
     </div>
+
     <div class="footer-bottom">
       &copy; 2026 Quaint Animation. Tutti i diritti riservati.
     </div>
   </footer>
 
   <script>
+    /* ── Form: invio via email ── */
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+
       const data = Object.fromEntries(new FormData(this));
-      const body = `Nome: ${data.name} ${data.surname}\nEmail: ${data.email}\nTelefono: ${data.phone||'—'}\nProgetto: ${data.projectType}\n\n${data.message}`;
+
+      const body = `Nome: ${data.name} ${data.surname}\nEmail: ${data.email}\nTelefono: ${data.phone || '—'}\nProgetto: ${data.projectType}\n\n${data.message}`;
+
       window.location.href = `mailto:creative@qanimation.it?subject=Richiesta - ${data.projectType}&body=${encodeURIComponent(body)}`;
+
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          form_type: 'contact',
+          project_type: data.projectType,
+          page_path: location.pathname
+        });
+      }
+
       document.getElementById('successMessage').style.display = 'block';
       this.reset();
-      setTimeout(() => document.getElementById('successMessage').style.display = 'none', 5000);
+
+      setTimeout(() => {
+        document.getElementById('successMessage').style.display = 'none';
+      }, 5000);
     });
 
+    /* ── Smooth scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const target = document.querySelector(a.getAttribute('href'));
+
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
 
+    /* ── Header hide/show on scroll ── */
     let lastScroll = 0;
+
     window.addEventListener('scroll', () => {
-      const cur = window.pageYOffset;
+      const currentScroll = window.pageYOffset;
+
       document.querySelector('header').style.transform =
-        (cur > lastScroll && cur > 100) ? 'translateY(-100%)' : 'translateY(0)';
-      lastScroll = cur;
+        (currentScroll > lastScroll && currentScroll > 100)
+          ? 'translateY(-100%)'
+          : 'translateY(0)';
+
+      lastScroll = currentScroll;
+    });
+
+    /* ── Analytics: scroll depth ── */
+    (function () {
+      const sent = new Set();
+      const thresholds = [25, 50, 75, 90, 100];
+
+      function sendGA4(eventName, params) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      window.addEventListener('scroll', function () {
+        const doc = document.documentElement;
+        const scrollableHeight = doc.scrollHeight - window.innerHeight;
+
+        if (scrollableHeight <= 0) return;
+
+        const scrolledPercent = Math.min(
+          100,
+          Math.round((window.scrollY / scrollableHeight) * 100)
+        );
+
+        thresholds.forEach(function (threshold) {
+          const key = 'scroll_' + threshold;
+
+          if (scrolledPercent >= threshold && !sent.has(key)) {
+            sent.add(key);
+
+            sendGA4('scroll_depth', {
+              percent_scrolled: threshold,
+              page_path: location.pathname
+            });
+          }
+        });
+      }, { passive: true });
+    })();
+
+    /* ── Analytics: sezioni viste ── */
+    (function () {
+      const sent = new Set();
+
+      const sections = [
+        ['productions', 'Produzioni'],
+        ['about', 'Chi siamo'],
+        ['contact', 'Contatti']
+      ];
+
+      if (!('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+
+          const sectionId = entry.target.id;
+          const key = 'section_' + sectionId;
+
+          if (sent.has(key)) return;
+
+          sent.add(key);
+
+          if (typeof gtag === 'function') {
+            gtag('event', 'section_view', {
+              section_id: sectionId,
+              section_name: entry.target.dataset.sectionName || sectionId,
+              page_path: location.pathname
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+
+      sections.forEach(function ([sectionId, sectionName]) {
+        const element = document.getElementById(sectionId);
+
+        if (element) {
+          element.dataset.sectionName = sectionName;
+          observer.observe(element);
+        }
+      });
+    })();
+
+    /* ── Analytics: click su CTA ── */
+    document.querySelectorAll('.cta-buttons a, .submit-btn').forEach(function (element) {
+      element.addEventListener('click', function () {
+        if (typeof gtag !== 'function') return;
+
+        gtag('event', 'cta_click', {
+          cta_text: element.textContent.trim(),
+          cta_href: element.getAttribute('href') || 'form_submit',
+          page_path: location.pathname
+        });
+      });
     });
   </script>
 
